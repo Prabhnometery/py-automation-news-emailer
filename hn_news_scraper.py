@@ -38,19 +38,19 @@ print('Sending Email....')
 
 SERVER = 'smtp.gmail.com'
 PORT = 587
-FROM = 'prabhsimran29@gmail.com'
-TO = 'prabhsimran29@gmail.com'
-PASS = '****'
+FROM = ''  # Please add your email
+TO = ''  # Please add the email of the account it needs to be sent to
+PASS = ''  # Your id password
 
 msg = MIMEMultipart()
 
-msg['Subject'] = 'Top News Stories HN [Automated Email]' + ' '
-+ str(now.day) + '-' + str(now.month) + '-' + str(now.year)
+msg['Subject'] = 'Top News Stories HN [Automated Email]' + ' ' + \
+    str(now.day) + '-' + str(now.month) + '-' + str(now.year)
 
 msg['From'] = FROM
 msg['To'] = TO
 
-msg.attach(content, 'html')
+msg.attach(MIMEText(content, 'html'))
 
 print('Initalizing the Server')
 
