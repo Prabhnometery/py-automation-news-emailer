@@ -34,6 +34,7 @@ content += ('<br><br>End of Message')
 
 # Sending an Email
 
+print('Sending Email....')
 
 SERVER = 'smtp.gmail.com'
 PORT = 587
@@ -50,3 +51,16 @@ msg['From'] = FROM
 msg['To'] = TO
 
 msg.attach(content, 'html')
+
+print('Initalizing the Server')
+
+server = smtplib.SMTP(SERVER, PORT)
+server.set_debuglevel(1)
+server.ehlo()
+server.starttls()
+server.login(FROM, PASS)
+server.sendmail(FROM, TO, msg.as_string())
+
+print('Email Sent....')
+
+server.quit()
